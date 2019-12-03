@@ -9,7 +9,7 @@ public class DLL<T> implements List<T> {
     private int size = 0;
 
     public boolean add(T e) {
-        Node<T> newNode = new Node<T>(e);
+        Node<T> newNode = new Node<>(e);
         if (isEmpty()) {
             first = newNode;
             last = newNode;
@@ -29,7 +29,7 @@ public class DLL<T> implements List<T> {
         }
         Node<T> iNode = getNodeByIndex(i);
         Node<T> iNodePrev = iNode.getPrev();
-        Node<T> newNode = new Node<T>(t);
+        Node<T> newNode = new Node<>(t);
         newNode.setPrev(iNodePrev);
         newNode.setNext(iNode);
         iNode.setPrev(newNode);
@@ -64,7 +64,7 @@ public class DLL<T> implements List<T> {
     public boolean contains(Object o) {
         Node<T> current = first;
         while (current != null) {
-            if (current.getValue().equals(o)) return true; //if current.getValue() == o
+            if (current.getValue().equals(o)) return true;
             current = current.getNext();
         }
         return false;
@@ -83,7 +83,7 @@ public class DLL<T> implements List<T> {
     }
 
     private Node<T> getNodeByIndex(int i) {
-        if (i < 0 || i > size)
+        if (i < 0 || i >= size)
             throw new IndexOutOfBoundsException();
         Node<T> current = this.first;
         for (int j = 0; j < i; j++) {
