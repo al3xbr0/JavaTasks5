@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.function.Consumer;
 
-public class DLL<T> implements List<T> {
+public class DoubleLinkedList<T> implements List<T> {
     private Node<T> first = null, last = null;
     private int size = 0;
 
@@ -33,9 +33,9 @@ public class DLL<T> implements List<T> {
         newNode.setPrev(iNodePrev);
         newNode.setNext(iNode);
         iNode.setPrev(newNode);
-        if (iNodePrev != null)
+        if (iNodePrev != null) {
             iNodePrev.setNext(newNode);
-        else
+        } else
             first = newNode;
         size++;
     }
@@ -44,15 +44,15 @@ public class DLL<T> implements List<T> {
         Node<T> iNode = getNodeByIndex(i);
         T val = iNode.getValue();
         Node<T> iNodePrev = iNode.getPrev(), iNodeNext = iNode.getNext();
-        if (iNodePrev == null)
+        if (iNodePrev == null) {
             first = iNodeNext;
-        else {
+        } else {
             iNodePrev.setNext(iNodeNext);
             iNode.setPrev(null);
         }
-        if (iNodeNext == null)
+        if (iNodeNext == null) {
             last = iNodePrev;
-        else {
+        } else {
             iNodeNext.setPrev(iNodePrev);
             iNode.setNext(null);
         }
@@ -64,7 +64,9 @@ public class DLL<T> implements List<T> {
     public boolean contains(Object o) {
         Node<T> current = first;
         while (current != null) {
-            if (current.getValue().equals(o)) return true;
+            if (current.getValue().equals(o)) {
+                return true;
+            }
             current = current.getNext();
         }
         return false;
@@ -83,8 +85,9 @@ public class DLL<T> implements List<T> {
     }
 
     private Node<T> getNodeByIndex(int i) {
-        if (i < 0 || i >= size)
+        if (i < 0 || i >= size) {
             throw new IndexOutOfBoundsException();
+        }
         Node<T> current = this.first;
         for (int j = 0; j < i; j++) {
             current = current.getNext();
@@ -92,7 +95,7 @@ public class DLL<T> implements List<T> {
         return current;
     }
 
-    public void foreach(Consumer<? super T> method) {
+    void foreach(Consumer<? super T> method) {
         Node<T> current = first;
         while (current != null) {
             method.accept(current.getValue());

@@ -15,7 +15,7 @@ public class Main {
 
         System.out.println("-");
 
-        DLL<Integer> dd = new DLL<Integer>();
+        DoubleLinkedList<Integer> dd = new DoubleLinkedList<Integer>();
         dd.add(5);
         dd.add(8);
         dd.add(7);
@@ -27,7 +27,7 @@ public class Main {
 
         System.out.println("-");
 
-        QueuE<Integer> q = new QueuE<>();
+        MyQueue<Integer> q = new MyQueue<>();
         q.add(5);
         q.add(2);
         q.add(0);

@@ -1,13 +1,14 @@
 import java.util.Queue;
 
-public class QueuE<T> extends DLL<T> implements Queue<T> {
+public class MyQueue<T> extends DoubleLinkedList<T> implements Queue<T> {
     public boolean offer(T t) {
         return add(t);
     }
 
     public T peek() {
-        if (isEmpty())
+        if (isEmpty()) {
             return null;
+        }
         return get(0);
     }
 
