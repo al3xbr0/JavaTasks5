@@ -1,19 +1,19 @@
 public class Node<Key extends Comparable<Key>, Value> {
     private int height;
     Key key;
-    //private Value value;
+    private Value value;
     private Node<Key, Value> left, right;
 
     //region
     public Node(Key key, Value value) {
         height = 1;
         this.key = key;
-        //this.value = value;
+        this.value = value;
     }
 
-//    public void setHeight(int height) {
-//        this.height = height;
-//    }
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
     public Key getKey() {
         return key;
@@ -23,13 +23,13 @@ public class Node<Key extends Comparable<Key>, Value> {
         this.key = key;
     }
 
-//    public Value getValue() {
-//        return value;
-//    }
-//
-//    public void setValue(Value value) {
-//        this.value = value;
-//    }
+    public Value getValue() {
+        return value;
+    }
+
+    public void setValue(Value value) {
+        this.value = value;
+    }
 
     public Node getLeft() {
         return left;
@@ -76,8 +76,18 @@ public class Node<Key extends Comparable<Key>, Value> {
         return balance();
     }
 
-    private Node<Key, Value> findMin()
-    {
+    Node<Key, Value> search(Key k) {
+        if (k.compareTo(this.key) > 0 && right != null) {
+            return right.search(k);
+        } else if (k.compareTo(this.key) < 0 && left != null) {
+            return left.search(k);
+        } else if (k.compareTo(this.key) == 0) {
+            return this;
+        }
+        return null;
+    }
+
+    private Node<Key, Value> findMin() {
         return left != null ? left.findMin() : this;
     }
 
@@ -89,7 +99,7 @@ public class Node<Key extends Comparable<Key>, Value> {
         return balance();
     }
 
-    private Node<Key, Value> balance() {
+    public Node<Key, Value> balance() {
         fixHeight();
         if (balanceFactor() == 2) {
             if (right.balanceFactor() < 0)
