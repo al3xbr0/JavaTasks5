@@ -52,10 +52,10 @@ public class Node<Key extends Comparable<Key>, Value> {
     }
 
     Node<Key, Value> remove(Key k) {
-        if (k.compareTo(this.key) > 0) {
+        if (k.compareTo(key) > 0) {
             right = right != null ?
                     right.remove(k) : null;
-        } else if (k.compareTo(this.key) < 0) {
+        } else if (k.compareTo(key) < 0) {
             left = left != null ?
                     left.remove(k) : null;
         } else {
@@ -77,11 +77,13 @@ public class Node<Key extends Comparable<Key>, Value> {
     }
 
     Node<Key, Value> search(Key k) {
-        if (k.compareTo(this.key) > 0 && right != null) {
+        if (k.compareTo(key) > 0 && right != null) {
             return right.search(k);
-        } else if (k.compareTo(this.key) < 0 && left != null) {
+        }
+        if (k.compareTo(key) < 0 && left != null) {
             return left.search(k);
-        } else if (k.compareTo(this.key) == 0) {
+        }
+        if (k.compareTo(key) == 0) {
             return this;
         }
         return null;
@@ -99,7 +101,7 @@ public class Node<Key extends Comparable<Key>, Value> {
         return balance();
     }
 
-    public Node<Key, Value> balance() {
+    private Node<Key, Value> balance() {
         fixHeight();
         if (balanceFactor() == 2) {
             if (right.balanceFactor() < 0)

@@ -34,8 +34,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
     }
 
-    public boolean contains(Key key)
-    {
+    public boolean contains(Key key) {
         return root.search(key) != null;
     }
 
