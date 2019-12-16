@@ -1,44 +1,30 @@
-public class Node<Key extends Comparable<Key>, Value> {
+class Node<Key extends Comparable<Key>, Value> {
     private int height;
-    Key key;
+    private final Key key;
     private Value value;
     private Node<Key, Value> left, right;
 
-    //region
-    public Node(Key key, Value value) {
+    Key getKey() {
+        return key;
+    }
+
+    Value getValue() {
+        return value;
+    }
+
+    Node<Key, Value> getLeft() {
+        return left;
+    }
+
+    Node<Key, Value> getRight() {
+        return right;
+    }
+
+    Node(Key key, Value value) {
         height = 1;
         this.key = key;
         this.value = value;
     }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public Key getKey() {
-        return key;
-    }
-
-    public void setKey(Key key) {
-        this.key = key;
-    }
-
-    public Value getValue() {
-        return value;
-    }
-
-    public void setValue(Value value) {
-        this.value = value;
-    }
-
-    public Node getLeft() {
-        return left;
-    }
-
-    public Node getRight() {
-        return right;
-    }
-    //endregion
 
     Node<Key, Value> insert(Node<Key, Value> node) {
         if (node.key.compareTo(this.key) >= 0) {
@@ -61,10 +47,6 @@ public class Node<Key extends Comparable<Key>, Value> {
         } else {
             Node<Key, Value> l = left,
                     r = right;
-//            this.left = null;
-//            this.right = null;
-//            this.key = null;
-
             if (r == null) {
                 return l;
             }
@@ -120,7 +102,7 @@ public class Node<Key extends Comparable<Key>, Value> {
         return getHeight(right) - getHeight(left);
     }
 
-    private int getHeight(Node node) {
+    private int getHeight(Node<Key, Value> node) {
         return node != null ? node.height : 0;
     }
 
