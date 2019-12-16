@@ -1,35 +1,34 @@
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class DoubleLinkedListTest {
+class DoubleLinkedListTest {
     private DoubleLinkedList<Integer> list;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         list = new DoubleLinkedList<>();
     }
 
     @Test
-    public void DoubleLinkedList_NotNull() {
+    void DoubleLinkedList_NotNull() {
         assertNotNull(list);
     }
 
     @Test
-    public void isEmpty() {
+    void isEmpty() {
         assertTrue(list.isEmpty());
         list.add(42);
         assertFalse(list.isEmpty());
     }
 
     @Test
-    public void size() {
+    void size() {
         list.add(13);
         list.add(0);
         list.add(2, 5);
@@ -38,7 +37,7 @@ public class DoubleLinkedListTest {
     }
 
     @Test
-    public void add() {
+    void add() {
         list.add(12);
         list.add(17);
         list.add(0, 6);
@@ -46,7 +45,7 @@ public class DoubleLinkedListTest {
     }
 
     @Test
-    public void remove() {
+    void remove() {
         list.add(2);
         list.add(4);
         list.add(8);
@@ -58,7 +57,7 @@ public class DoubleLinkedListTest {
     }
 
     @Test
-    public void contains() {
+    void contains() {
         list.add(10);
         list.add(15);
         list.add(20);
@@ -67,7 +66,7 @@ public class DoubleLinkedListTest {
     }
 
     @Test
-    public void get() {
+    void get() {
         list.add(17);
         list.add(-26);
         list.add(84);
@@ -76,13 +75,13 @@ public class DoubleLinkedListTest {
     }
 
     @Test
-    public void foreach() {
+    void foreach() {
         list.add(-21);
         list.add(76);
         list.add(0);
         list.add(99);
-        List expected = Arrays.asList(-21, 76, 0, 99);
-        Iterator iterator = expected.iterator();
+        List<Integer> expected = Arrays.asList(-21, 76, 0, 99);
+        Iterator<Integer> iterator = expected.iterator();
         list.foreach(actual -> assertEquals(iterator.next(), actual));
     }
 }
