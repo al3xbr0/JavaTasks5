@@ -1,19 +1,13 @@
 public class BST<Key extends Comparable<Key>, Value> {
     private Node<Key, Value> root;
 
-    public Value put(Node<Key, Value> node) {
+    private Value put(Node<Key, Value> node) {
         root = isEmpty() ? node : root.insert(node);
         return node.getValue();
     }
 
     public Value put(Key key, Value value) {
         return put(new Node<>(key, value));
-    }
-
-    public void put(Node<Key, Value>... nodes) {
-        for (var node : nodes) {
-            put(node);
-        }
     }
 
     public Value get(Key key) {
@@ -26,7 +20,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     public Value remove(Key key) {
-        if (!isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
         Value v = get(key);
@@ -38,17 +32,19 @@ public class BST<Key extends Comparable<Key>, Value> {
         return root == null;
     }
 
-    public void print() {
-        printNode(root);
-        System.out.println();
+    public String print() {
+        String s = "";
+        s = printNode(root, s);
+        return s.substring(0, s.length() - 1);
     }
 
-    private void printNode(Node<Key, Value> node) {
+    private String printNode(Node<Key, Value> node, String current) {
         if (node != null) {
-            printNode(node.getLeft());
-            System.out.print(node.getKey() + " ");
+            current += printNode(node.getLeft(), "");
+            current += node.getKey().toString() + " ";
             if (node.getRight() != null)
-                printNode(node.getRight());
+                current += printNode(node.getRight(), "");
         }
+        return current;
     }
 }

@@ -1,7 +1,7 @@
 class Node<Key extends Comparable<Key>, Value> {
     private int height;
     private final Key key;
-    private Value value;
+    private final Value value;
     private Node<Key, Value> left, right;
 
     Key getKey() {
