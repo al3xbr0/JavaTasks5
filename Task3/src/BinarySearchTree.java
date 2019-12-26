@@ -1,4 +1,4 @@
-public class BST<Key extends Comparable<Key>, Value> {
+public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     private Node<Key, Value> root;
 
     private Value put(Node<Key, Value> node) {

@@ -3,12 +3,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BSTTest {
-    private BST<Integer, Integer> bst;
+class BinarySearchTreeTest {
+    private BinarySearchTree<Integer, Integer> bst;
 
     @BeforeEach
     void setUp() {
-        bst = new BST<>();
+        bst = new BinarySearchTree<>();
     }
 
     @Test

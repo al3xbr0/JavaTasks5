@@ -3,12 +3,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TMTest {
-    private TM<Integer, Integer> tm;
+class TreeMapTest {
+    private TreeMap<Integer, Integer> tm;
 
     @BeforeEach
     void setUp() {
-        tm = new TM<>();
+        tm = new TreeMap<>();
     }
 
     @Test

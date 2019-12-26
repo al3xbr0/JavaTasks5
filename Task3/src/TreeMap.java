@@ -2,7 +2,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class TM<Key extends Comparable<Key>, Value> extends BST<Key, Value> implements Map<Key, Value> {
+public class TreeMap<Key extends Comparable<Key>, Value> extends BinarySearchTree<Key, Value> implements Map<Key, Value> {
     public Value get(Object o) {
         return super.get((Key) o);
     }
