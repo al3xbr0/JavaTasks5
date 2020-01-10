@@ -38,7 +38,9 @@ public class ATM {
                 if (v <= 0) {
                     throw new IllegalArgumentException("ERROR: Sum and Values must be positive!");
                 }
-                values.add(v);
+                if (!values.contains(v)) {
+                    values.add(v);
+                }
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("ERROR: Invalid input!");
