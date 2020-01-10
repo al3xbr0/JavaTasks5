@@ -38,7 +38,6 @@ class DirectoriesFilesPrinterTest {
                 "|qq.txt";
     }
 
-
     @Test
     void testMain() throws IOException {
         DirectoriesFilesPrinter.main(new String[]{path, file});
@@ -46,6 +45,5 @@ class DirectoriesFilesPrinterTest {
         String actual = String.join("\n", ls);
 
         assertEquals(expected, actual);
-        // rmdir /s C:\Users\Alex\IdeaProjects\JavaTasks5\Task4\test\TEST_DIR
     }
 }

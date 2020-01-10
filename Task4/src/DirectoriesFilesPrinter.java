@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 public class DirectoriesFilesPrinter {
-    private static PrintStream out; // = new PrintStream(System.out);
+    private static PrintStream out;
 
     public static void main(String[] args) throws IOException {
         if (args.length < 2) {
-            String path = "C:\\Users\\Alex\\IdeaProjects\\JavaTasks5\\ttpath";
             return;
         }
         String path = args[0];
@@ -23,7 +22,6 @@ public class DirectoriesFilesPrinter {
     private static void find(File path, int d) {
         var dirList = path.listFiles(File::isDirectory);
         var filesList = path.listFiles(File::isFile);
-        //if (dirList == null) return;
 
         for (var f : dirList) {
             out.println("| ".repeat(d - 1)
