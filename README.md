@@ -11,3 +11,6 @@ Implement binary search tree and treemap.
 
 ## [Task 4](https://github.com/al3xbr0/JavaTasks5/tree/master/Task4)
 Implement a program which recursively lists all subdirectories and files of given directory.
+
+## [Task 5](https://github.com/al3xbr0/JavaTasks5/tree/master/Task5)
+Implement a resource pool and a program which uses the pool for solving large arrays of quadratic equations.
